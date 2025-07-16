@@ -1,0 +1,804 @@
+/* Basic Reset & Body Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --dark-blue: #3A2B70; /* From brand guide */
+    --orange: #ED6B22;   /* From brand guide */
+    --text-color: #333;
+    --light-gray: #f4f4f4;
+    --white: #fff;
+    --overlay-dark: rgba(0, 0, 0, 0.6); /* Slightly darker overlay for hero */
+    --form-bg: #ffffff; /* Explicit form background */
+    --input-border: #ccd0d5; /* Lighter, subtle border */
+    --input-focus-shadow: rgba(237, 107, 34, 0.4); /* Stronger orange glow on focus */
+}
+
+body {
+    font-family: 'Rockwell Condensed', sans-serif; /* As per brand guide */
+    line-height: 1.6;
+    color: var(--text-color);
+    background-color: var(--white);
+}
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px 0;
+}
+
+/* Header Styles */
+header {
+    background-color: var(--dark-blue);
+    color: var(--white);
+    padding: 1rem 0;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.logo-link {
+    display: flex;
+    align-items: center;
+}
+
+header .logo {
+    height: 60px;
+    transition: transform 0.3s ease;
+}
+
+header .logo:hover {
+    transform: scale(1.05);
+}
+
+/* Navigation Styles */
+.main-nav {
+    display: flex;
+    align-items: center;
+}
+
+.nav-links {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    gap: 25px;
+}
+
+.nav-links a {
+    color: var(--white);
+    text-decoration: none;
+    font-weight: bold;
+    padding: 5px 0;
+    transition: color 0.3s ease, border-bottom 0.3s ease;
+}
+
+.nav-links a:hover {
+    color: var(--orange);
+    border-bottom: 2px solid var(--orange);
+}
+
+/* Hamburger Menu Toggle */
+.menu-toggle {
+    display: none;
+    background: none;
+    border: none;
+    font-size: 2em;
+    color: var(--white);
+    cursor: pointer;
+}
+
+/* Hero Section (with Background Carousel) */
+.hero {
+    position: relative;
+    overflow: hidden;
+    color: var(--white);
+    text-align: center;
+    padding: 120px 20px;
+    min-height: 60vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.background-carousel {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+}
+
+.carousel-img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    opacity: 0;
+    transition: opacity 1.5s ease-in-out; /* Transition for fading */
+}
+
+.carousel-img.active {
+    opacity: 1;
+}
+
+.hero-content-overlay {
+    position: relative;
+    z-index: 1;
+    background: var(--overlay-dark); /* Using variable for overlay */
+    padding: 30px;
+    border-radius: 10px;
+    width: 100%;
+    max-width: 900px;
+}
+
+.hero h1 {
+    font-size: 3.5em;
+    margin-bottom: 20px;
+    line-height: 1.1;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.7);
+}
+
+.hero p {
+    font-size: 1.3em;
+    max-width: 800px;
+    margin-bottom: 40px;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.7);
+}
+
+.cta-button {
+    background-color: var(--dark-blue);
+    color: var(--white);
+    padding: 18px 35px;
+    border: none;
+    border-radius: 8px;
+    font-size: 1.2em;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    text-decoration: none;
+    display: inline-block;
+}
+
+.cta-button:hover {
+    background-color: #2a1f59;
+    transform: translateY(-3px);
+}
+
+.cta-button.small-button {
+    padding: 10px 20px;
+    font-size: 1em;
+}
+
+/* Section Common Styles */
+section {
+    padding: 80px 0;
+    text-align: center;
+}
+
+section h2 {
+    color: var(--dark-blue);
+    font-size: 2.5em;
+    margin-bottom: 40px;
+}
+
+/* About Section */
+.about-section {
+    background-color: var(--light-gray);
+}
+
+.about-section p {
+    font-size: 1.1em;
+    max-width: 900px;
+    margin: 0 auto 50px auto;
+}
+
+.about-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+    margin-top: 40px;
+}
+
+.grid-item {
+    background-color: var(--white);
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    transition: transform 0.3s ease;
+}
+
+.grid-item:hover {
+    transform: translateY(-5px);
+}
+
+.grid-item img {
+    height: 60px;
+    margin-bottom: 20px;
+}
+
+.grid-item h3 {
+    color: var(--orange);
+    margin-bottom: 15px;
+}
+
+/* Services Section */
+.services-section {
+    background-color: var(--white);
+}
+
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    margin-top: 40px;
+}
+
+.service-item {
+    background-color: var(--dark-blue);
+    color: var(--white);
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.service-item h3 {
+    color: var(--orange);
+    margin-bottom: 15px;
+}
+
+/* Testimonials Section */
+.testimonials-section {
+    background-color: var(--light-gray);
+    padding: 60px 0;
+}
+
+.testimonial-slider {
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    gap: 20px;
+    padding-bottom: 20px;
+}
+
+.testimonial-item {
+    flex: 0 0 80%;
+    max-width: 400px;
+    background-color: var(--white);
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    scroll-snap-align: start;
+    margin: auto;
+}
+
+.testimonial-item p {
+    font-style: italic;
+    margin-bottom: 20px;
+    font-size: 1.1em;
+}
+
+.testimonial-item h4 {
+    color: var(--dark-blue);
+    font-weight: normal;
+}
+
+/* Events Section */
+.events-section {
+    background-color: var(--white);
+}
+
+.event-card {
+    background-color: var(--light-gray);
+    padding: 30px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    text-align: left;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+
+.event-card h3 {
+    color: var(--dark-blue);
+    margin-bottom: 10px;
+}
+
+.event-card p {
+    margin-bottom: 5px;
+}
+
+.event-card .cta-button {
+    margin-top: 15px;
+}
+
+/* Notre Équipe Section (Styles pour le Carrousel) */
+.team-section {
+    background-color: var(--dark-blue);
+    color: var(--white);
+}
+
+.team-section h2 {
+    color: var(--orange);
+}
+
+.team-carousel-container {
+    position: relative; /* Pour positionner les flèches */
+    max-width: 100%;
+    overflow: hidden; /* Cache les éléments qui dépassent */
+    margin: 40px auto 0 auto;
+}
+
+.team-carousel-track {
+    display: flex; /* ESSENTIEL : MET LES ÉLÉMENTS SUR UNE SEULE LIGNE */
+    transition: transform 0.5s ease-in-out; /* Animation de défilement */
+    /* Pas de flex-wrap ici pour GARDER TOUT SUR UNE LIGNE */
+    gap: 30px; /* Espace entre les membres */
+    padding-bottom: 20px; /* Pour la barre de défilement si elle apparaît */
+    /* scroll-snap-type est géré par JS pour le défilement un par un */
+    -webkit-overflow-scrolling: touch; /* Améliore le défilement sur iOS */
+}
+
+.team-member {
+    background-color: var(--white);
+    color: var(--text-color);
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+    /* Ces propriétés assurent une taille uniforme et empêchent le retour à la ligne */
+    flex: 0 0 auto; /* Empêche l'élément de rétrécir ou de grandir, garde la taille définie */
+    min-width: 250px; /* Largeur minimale de chaque carte */
+    max-width: 280px; /* Largeur maximale de chaque carte */
+    text-align: center;
+    transition: transform 0.3s ease;
+    /* scroll-snap-align est géré par JS */
+}
+
+.team-member:hover {
+    transform: translateY(-5px);
+}
+
+.member-photo {
+    width: 120px; /* Taille uniforme */
+    height: 120px; /* Taille uniforme */
+    border-radius: 50%; /* Pour les rendre rondes */
+    object-fit: cover; /* Pour que les images remplissent le cercle sans être déformées */
+    margin-bottom: 15px;
+    border: 3px solid var(--orange);
+}
+
+.team-member h3 {
+    color: var(--dark-blue);
+    margin-bottom: 5px;
+    font-size: 1.3em;
+}
+
+.member-role {
+    color: var(--orange);
+    font-size: 1em;
+}
+
+/* Flèches du carrousel */
+.carousel-button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(0, 0, 0, 0.6);
+    color: var(--white);
+    border: none;
+    padding: 10px 15px;
+    cursor: pointer;
+    font-size: 2em;
+    z-index: 10;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+.carousel-button:hover {
+    background-color: rgba(0, 0, 0, 0.8);
+}
+
+.carousel-button.prev {
+    left: 0;
+}
+
+.carousel-button.next {
+    right: 0;
+}
+
+/* Section d'inscription (formulaire) */
+.registration-section {
+    background-color: var(--light-gray);
+    padding: 80px 0;
+    text-align: center;
+}
+
+.registration-section h2 {
+    color: var(--dark-blue);
+    font-size: 2.5em;
+    margin-bottom: 20px;
+}
+
+.registration-section p {
+    font-size: 1.1em;
+    color: var(--text-color);
+    margin-bottom: 40px;
+    max-width: 700px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.registration-form {
+    background-color: var(--form-bg);
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    max-width: 900px;
+    margin: 0 auto;
+    text-align: left;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+    color: var(--dark-blue);
+    font-size: 1.05em;
+}
+
+.form-group input[type="text"],
+.form-group input[type="email"],
+.form-group input[type="password"],
+.form-group input[type="url"] {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid var(--input-border);
+    border-radius: 6px;
+    font-size: 1em;
+    color: var(--text-color);
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.form-group input[type="text"]:focus,
+.form-group input[type="email"]:focus,
+.form-group input[type="password"]:focus,
+.form-group input[type="url"]:focus {
+    border-color: var(--orange);
+    outline: none;
+    box-shadow: 0 0 0 4px var(--input-focus-shadow);
+}
+
+.registration-form .cta-button {
+    grid-column: 1 / -1;
+    width: 100%;
+    padding: 16px;
+    font-size: 1.25em;
+    margin-top: 20px;
+    background-color: var(--dark-blue);
+    color: var(--white);
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+
+.registration-form .cta-button:hover {
+    background-color: #2a1f59;
+    transform: translateY(-3px);
+    box-shadow: 0 6px 15px rgba(0,0,0,0.3);
+}
+
+/* --- CSS POUR LA VALIDATION DES FORMULAIRES --- */
+
+.form-group.error input {
+    border-color: red;
+    box-shadow: 0 0 0 4px rgba(255, 0, 0, 0.2);
+}
+
+.form-group .error-message {
+    color: red;
+    font-size: 0.88em;
+    margin-top: 5px;
+    text-align: left;
+    display: none;
+}
+
+.form-group.error .error-message {
+    display: block;
+}
+
+
+/* Footer Styles */
+footer {
+    background-color: var(--dark-blue);
+    color: var(--white);
+    padding: 30px 0;
+    text-align: center;
+    border-top: 5px solid var(--orange); /* Ajoute une touche d'orange en haut du footer */
+}
+
+.footer-grid {
+    display: grid;
+    grid-template-columns: 1fr; /* Par défaut une colonne pour mobile */
+    gap: 30px;
+    align-items: start;
+    text-align: left; /* Aligne le texte à gauche dans chaque colonne */
+}
+
+.footer-contact-info h3,
+.footer-social-media-links h3 {
+    color: var(--orange); /* Couleur orange pour les titres de sous-sections */
+    margin-bottom: 15px;
+    font-size: 1.4em;
+}
+
+.footer-contact-info p,
+.footer-contact-info a {
+    color: var(--white);
+    text-decoration: none;
+    margin-bottom: 5px;
+    font-size: 1em;
+}
+
+.footer-contact-info a:hover {
+    color: var(--orange);
+    text-decoration: underline;
+}
+
+.footer-social-media-links {
+    text-align: left; /* Aligner le titre à gauche */
+}
+
+.social-icons-wrapper {
+    display: flex;
+    flex-direction: column; /* Par défaut, les icônes s'empilent verticalement sur petits écrans */
+    gap: 10px; /* Espace entre les icônes empilées */
+    align-items: flex-start; /* Aligner les icônes à gauche */
+}
+
+.social-icon {
+    display: inline-flex; /* Utilise flexbox pour aligner l'icône et le texte */
+    align-items: center; /* Centre verticalement le contenu (icône et texte) */
+    justify-content: flex-start; /* Aligne l'icône et le texte au début */
+    width: auto; /* La largeur s'ajuste au contenu */
+    min-width: 140px; /* Largeur minimale pour contenir icône + texte */
+    height: 45px; /* Hauteur fixe pour une uniformité */
+    padding: 0 15px; /* Rembourrage interne pour l'icône et le texte */
+    background-color: var(--orange); /* Couleur de fond selon la charte */
+    color: var(--white); /* Couleur du texte par défaut */
+    text-decoration: none;
+    border-radius: 25px; /* Rend la forme "pilule" */
+    font-size: 1em; /* Taille de police de base pour le texte */
+    font-weight: bold;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+.social-icon i {
+    font-size: 1.5em; /* Taille spécifique pour l'icône Font Awesome */
+    margin-right: 10px; /* Espacement entre l'icône et le texte */
+    color: var(--white); /* S'assurer que l'icône est blanche */
+}
+
+.social-icon span {
+    color: var(--white); /* S'assurer que le texte est blanc */
+}
+
+.social-icon:hover {
+    background-color: #d15d1e; /* Une nuance d'orange un peu plus foncée au survol */
+    transform: translateY(-3px) scale(1.05); /* Effet de léger soulèvement et agrandissement */
+}
+
+.footer-copyright {
+    text-align: center; /* Centrer le copyright en bas */
+    margin-top: 20px;
+    grid-column: 1 / -1; /* Prend toute la largeur de la grille sur tous les écrans */
+}
+
+/* --- Responsive Design (Media Queries) --- */
+
+/* Tablets (Portrait and Landscape) */
+@media (max-width: 1024px) {
+    .hero h1 {
+        font-size: 2.8em;
+    }
+
+    .hero p {
+        font-size: 1.1em;
+    }
+
+    .nav-links {
+        gap: 15px;
+    }
+
+    .about-grid, .services-grid {
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    }
+
+    .testimonial-item {
+        flex: 0 0 90%;
+    }
+
+    .carousel-button {
+        padding: 8px 12px;
+        font-size: 1.8em;
+    }
+
+    /* Formulaire : 2 colonnes sur tablettes */
+    .registration-form {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    /* Footer Responsive */
+    .footer-grid {
+        grid-template-columns: 1fr; /* Une seule colonne par défaut */
+    }
+    .footer-contact-info,
+    .footer-social-media-links {
+        text-align: left;
+    }
+    .social-icons-wrapper {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+}
+
+@media (max-width: 768px) {
+    .container {
+        width: 95%;
+        padding: 15px 0;
+    }
+
+    header .container {
+        flex-direction: row;
+        justify-content: space-between;
+    }
+
+    .main-nav {
+        width: 100%;
+        order: 1;
+    }
+
+    .nav-links {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        background-color: var(--dark-blue);
+        padding: 10px 0;
+        text-align: center;
+        position: absolute;
+        left: 0;
+        top: 100%;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    }
+
+    .nav-links.active {
+        display: flex;
+    }
+
+    .menu-toggle {
+        display: block;
+    }
+
+    .hero {
+        padding: 80px 15px;
+        min-height: 40vh;
+    }
+
+    .hero h1 {
+        font-size: 2.2em;
+    }
+
+    .hero p {
+        font-size: 1em;
+    }
+
+    .cta-button {
+        padding: 12px 25px;
+        font-size: 1em;
+    }
+
+    section {
+        padding: 50px 0;
+    }
+
+    section h2 {
+        font-size: 2em;
+        margin-bottom: 30px;
+    }
+
+    .about-grid, .services-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .testimonial-item {
+        flex: 0 0 95%;
+    }
+
+    .carousel-button {
+        padding: 6px 10px;
+        font-size: 1.5em;
+    }
+
+    /* Formulaire : 1 colonne sur mobiles */
+    .registration-form {
+        grid-template-columns: 1fr;
+    }
+
+    /* Footer Responsive */
+    .footer-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    .footer-contact-info,
+    .footer-social-media-links {
+        text-align: left;
+    }
+    .social-icons-wrapper {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .social-icon {
+        width: auto;
+        min-width: 120px;
+        height: 38px;
+        font-size: 0.9em;
+        padding: 0 10px;
+    }
+    .social-icon i {
+        font-size: 1.3em;
+        margin-right: 8px;
+    }
+}
+
+/* Even Smaller Mobile Screens */
+@media (max-width: 480px) {
+    header .logo {
+        height: 50px;
+    }
+
+    .hero h1 {
+        font-size: 1.8em;
+    }
+
+    .hero p {
+        font-size: 0.9em;
+    }
+
+    .cta-button {
+        font-size: 0.9em;
+        padding: 10px 20px;
+    }
+
+    section h2 {
+        font-size: 1.8em;
+    }
+
+    .testimonial-item {
+        flex: 0 0 100%;
+    }
+
+    .social-media-links a { /* Ceci est pour le header/nav, pas le footer */
+        width: 40px;
+        height: 40px;
+        font-size: 1.3em;
+    }
+}
